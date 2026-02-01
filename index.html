@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT-Экспресс: Курс по информационным технологиям и функциональной грамотности | Для школьников 5-х классов</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c5aa0;
+            --primary-light: #4a7bc7;
+            --secondary: #ff6600;
+            --accent: #00a86b;
+            --light: #f5f9ff;
+            --dark: #222;
+            --gray: #555;
+            --light-gray: #e9f1ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--primary), #1a3a7a);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 102, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: #e55a00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 102, 0, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.8);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 900px;
+            margin: 0 auto 2rem;
+            background-color: rgba(255,255,255,0.7);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        /* Teacher Section */
+        .teacher {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .teacher-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .teacher-photo {
+            text-align: center;
+        }
+        
+        .teacher-photo img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .teacher-info h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .teacher-title {
+            color: var(--secondary);
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .teacher-skills {
+            list-style-type: none;
+            margin-top: 20px;
+        }
+        
+        .teacher-skills li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .teacher-skills li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* IT Skills Section */
+        .it-skills {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .skill-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        /* Test Prep Section */
+        .test-prep {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .test-container {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(44, 90, 160, 0.3);
+        }
+        
+        .test-container h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .test-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .test-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .test-item i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+        
+        .pricing-card {
+            background: white;
+            color: var(--dark);
+            border-radius: 15px;
+            padding: 40px 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--primary);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--secondary);
+        }
+        
+        .price span {
+            font-size: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .pricing-features {
+            list-style-type: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li i {
+            margin-right: 15px;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background-color: var(--light-gray);
+            border-radius: 10px;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo i {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+        
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style-type: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .teacher-container, .test-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>IT-Экспресс</h1>
+                        <p>Курс по IT и функциональной грамотности для 5-х классов</p>
+                    </div>
+                </div>
+                <a href="#contact" class="cta-button">Связаться с педагогом</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>IT-подготовка + Успешная сдача теста функциональной грамотности</h2>
+            <p>Комплексный курс для пятиклассников: <span class="highlight">информационные технологии</span> и подготовка к диагностической работе МЦКО по функциональной грамотности. Развиваем digital-навыки и учим применять знания на практике.</p>
+            <a href="#pricing" class="cta-button">Узнать программу курса</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Что входит в курс?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Подготовка к тесту МЦКО</h3>
+                    <p>Готовим к диагностике функциональной грамотности: читательская, математическая и естественно-научная грамотность. Учим решать задачи формата МЦКО.</p>
+                    <p><strong>Результат:</strong> уверенность на диагностике и высокие баллы.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h3>Цифровые навыки</h3>
+                    <p>Обучение работе с офисными программами: создание презентаций, набор текста, работа с электронными таблицами. Основы компьютерной грамотности.</p>
+                    <p><strong>Результат:</strong> практические навыки для учебы и жизни.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3>Современные технологии</h3>
+                    <p>Знакомство с 3D-моделированием, основами программирования, работой с графикой. Развитие алгоритмического мышления и креативности.</p>
+                    <p><strong>Результат:</strong> интерес к IT и технологиям будущего.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teacher Section -->
+    <section class="teacher">
+        <div class="container">
+            <h2 class="section-title">Педагог курса</h2>
+            <div class="teacher-container">
+                <div class="teacher-photo">
+                    <!-- Вставьте ссылку на фото педагога здесь -->
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Учитель информатики">
+                </div>
+                <div class="teacher-info">
+                    <h3>Александр Николаевич</h3>
+                    <div class="teacher-title">Учитель информатики в основной и старшей школе</div>
+                    <p>Опытный педагог с 12-летним стажем преподавания информатики и программирования. Специалист по подготовке школьников к диагностическим работам и олимпиадам по информационным технологиям.</p>
+                    <p>Разрабатывает авторские методики обучения, сочетающие практические IT-навыки с развитием функциональной грамотности.</p>
+                    <ul class="teacher-skills">
+                        <li>Подготовка к диагностике МЦКО</li>
+                        <li>Обучение основам программирования</li>
+                        <li>Работа с офисными программами</li>
+                        <li>3D-моделирование и компьютерная графика</li>
+                        <li>Развитие алгоритмического мышления</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Skills Section -->
+    <section class="it-skills">
+        <div class="container">
+            <h2 class="section-title">IT-навыки, которые получит ребёнок</h2>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-file-powerpoint"></i>
+                    </div>
+                    <h4>Создание презентаций</h4>
+                    <p>Учим создавать красивые и информативные презентации для школьных проектов</p>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-keyboard"></i>
+                    </div>
+                    <h4>Слепой набор текста</h4>
+                    <p>Осваиваем десятипальцевый метод печати для быстрой и эффективной работы</p>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <h4>Электронные таблицы</h4>
+                    <p>Работа с формулами, графиками и анализом данных в таблицах</p>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h4>3D-моделирование</h4>
+                    <p>Основы создания трёхмерных объектов и простой анимации</p>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4>Основы программирования</h4>
+                    <p>Изучение базовых алгоритмов и создание первых программ</p>
+                </div>
+                
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>Работа с информацией</h4>
+                    <p>Поиск, анализ и обработка информации из разных источников</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Preparation Section -->
+    <section class="test-prep">
+        <div class="container">
+            <div class="test-container">
+                <h3>Подготовка к диагностике функциональной грамотности МЦКО</h3>
+                <p>В ноябре 2024 года все пятиклассники Москвы проходят диагностическую работу по функциональной грамотности. Наш курс включает целенаправленную подготовку к этому тесту.</p>
+                
+                <div class="test-details">
+                    <div class="test-item">
+                        <i class="fas fa-book-open"></i>
+                        <h4>Читательская грамотность</h4>
+                        <p>Работа с текстами разных типов, анализ информации</p>
+                    </div>
+                    
+                    <div class="test-item">
+                        <i class="fas fa-calculator"></i>
+                        <h4>Математическая грамотность</h4>
+                        <p>Решение практических задач, работа с данными</p>
+                    </div>
+                    
+                    <div class="test-item">
+                        <i class="fas fa-flask"></i>
+                        <h4>Естественно-научная грамотность</h4>
+                        <p>Понимание научных текстов, анализ явлений</p>
+                    </div>
+                    
+                    <div class="test-item">
+                        <i class="fas fa-laptop"></i>
+                        <h4>Компьютерное тестирование</h4>
+                        <p>Подготовка к формату компьютерного теста</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Стоимость обучения</h2>
+            <div class="pricing-card">
+                <h3>IT-Экспресс курс</h3>
+                <p>16 занятий в месяц по 60 минут каждое</p>
+                <div class="price">4 000 <span>руб. / месяц</span></div>
+                <p><em>(250 руб. за академический час)</em></p>
+                
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Подготовка к тесту функциональной грамотности МЦКО</li>
+                    <li><i class="fas fa-check"></i> Обучение созданию презентаций и работе с текстом</li>
+                    <li><i class="fas fa-check"></i> Основы работы с электронными таблицами</li>
+                    <li><i class="fas fa-check"></i> Знакомство с 3D-моделированием</li>
+                    <li><i class="fas fa-check"></i> Основы программирования для начинающих</li>
+                    <li><i class="fas fa-check"></i> Развитие цифровой грамотности</li>
+                    <li><i class="fas fa-check"></i> Индивидуальный подход к каждому ученику</li>
+                    <li><i class="fas fa-check"></i> Учебные материалы и практические задания</li>
+                </ul>
+                
+                <p style="margin-top: 20px; font-weight: bold; color: var(--primary);">Группы до 6 человек • Индивидуальный график • Онлайн или офлайн</p>
+            </div>
+            
+            <div id="contact" class="contact-info">
+                <h3>Контакты для записи</h3>
+                <p style="text-align: center; margin-bottom: 20px;">Для записи на курс или получения дополнительной информации свяжитесь с педагогом:</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Телефон:</strong><br>
+                            +7 (495) 123-45-67
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email:</strong><br>
+                            it-express@course.ru
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>График консультаций:</strong><br>
+                            Пн-Пт: 16:00-20:00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-laptop-code"></i>
+                        <div>
+                            <h3>IT-Экспресс</h3>
+                            <p>Курс по IT и функциональной грамотности</p>
+                        </div>
+                    </div>
+                    <p>Современный курс для пятиклассников, сочетающий подготовку к диагностике МЦКО и развитие практических IT-навыков. Официальная подготовка к тесту функциональной грамотности и обучение цифровым технологиям.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Программа курса</h4>
+                    <ul>
+                        <li><a href="#">Подготовка к тесту МЦКО</a></li>
+                        <li><a href="#">IT-навыки</a></li>
+                        <li><a href="#">3D-моделирование</a></li>
+                        <li><a href="#">Основы программирования</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Полезные ресурсы</h4>
+                    <ul>
+                        <li><a href="http://demo.mcko.ru/test/" target="_blank">Демо-тест МЦКО</a></li>
+                        <li><a href="#">ФГОС основного образования</a></li>
+                        <li><a href="#">Сайт МЦКО</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2024 IT-Экспресс: Курс по информационным технологиям и функциональной грамотности. Все права защищены.</p>
+                <p>Программа курса разработана на основе спецификации диагностической работы МЦКО для 5-х классов.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
